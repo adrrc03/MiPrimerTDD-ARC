@@ -1,0 +1,678 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Memoria TDD InteliJ Junit5</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4563c232-4b01-450f-8ff3-24fb73fa4af1" class="page sans"><header><h1 class="page-title">Memoria TDD InteliJ Junit5</h1><p class="page-description"></p></header><div class="page-body"><p id="7382492d-644a-4172-b8cb-ef0197d540ab" class="">Antes de comenzar la practica deberemos de instalar el plugin de Junit5 :</p><figure id="4f575742-3a84-464e-8fed-c8e3daa0543a" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled.png"><img style="width:1920px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled.png"/></a></figure><hr id="e963026d-cc9d-4612-99ad-3b1634d7efc9"/><p id="70867940-48fa-4ab7-bc66-8cdb0c1ce09f" class="">
+</p><p id="da266dbd-e570-41c0-baa8-ebe5db535b62" class="">Tras esto crearemos un nuevo proyecto en inteliJ, que yo en mi caso llamare <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>TDD-Coche</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p><p id="78f79f6e-f3f4-427a-932b-3e34308e5023" class="">Para abriremos InteliJ y haremos click en new project:</p><figure id="161d99a6-9ebe-4022-b8f1-72d8becd8d41" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%201.png"><img style="width:784px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%201.png"/></a></figure><p id="0be0596e-880a-43b0-83b6-3e062e9adf70" class="">
+</p><p id="e9f0baa2-0044-40d0-9f20-b47dc1894e47" class="">Rellenamos los datos para el nuevo proyecto y haremos click en Create:</p><figure id="b4fb19f4-244b-4100-9749-a1b23999fb8e" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%202.png"><img style="width:784px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%202.png"/></a></figure><p id="63896b10-62c8-41b5-81b8-191a7cb72118" class="">Con todo esto ya deberíamos de contar con un proyecto nuevo:</p><figure id="070807a1-0751-4e76-b1cc-a113dd22a9e2" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%203.png"><img style="width:1920px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%203.png"/></a></figure><hr id="3c145362-c77b-4233-a024-b19e89c41434"/><p id="9ffb42d1-7e12-42fb-be30-16755172a9fc" class="">
+</p><p id="8d290944-6cb2-4ae7-a2a1-3f434acb0549" class="">Ahora vamos a crear la carpeta de tests, para esto crearemos un directorio dentro del proyecto y lo marcaremos como directorio de tests: </p><figure id="45d5c296-83dc-468c-8d40-a31cdcd57fd3" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%204.png"><img style="width:1090px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%204.png"/></a></figure><figure id="37a90ac4-4cd2-4b0a-a852-0a19599f94f1" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%205.png"><img style="width:315px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%205.png"/></a></figure><figure id="add5adbf-dec4-43be-a812-f51f057fb971" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%206.png"><img style="width:793px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%206.png"/></a></figure><hr id="3e8aedf1-dbcf-46df-a168-0ccbfdc0a90b"/><p id="0462cdf3-43be-4ae5-a16f-3e717c04d317" class="">
+</p><p id="7db080cd-4c32-43f2-9c96-1d1fa4070e69" class="">Ahora crearemos una clase java dentro del directorio creado anteriormente llamada <strong><strong><strong><strong><strong>TestCoche</strong></strong></strong></strong></strong>, indicaremos que setrata de un test usando la notación <strong><strong><strong><strong><strong>@Test </strong></strong></strong></strong></strong>e importaremos el paquete de Junit5:</p><figure id="16956c73-2f25-456e-b858-64f1a528f9c8" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%207.png"><img style="width:954px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%207.png"/></a></figure><figure id="f648ece3-fd34-49d1-a25b-12c33d2a383b" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%208.png"><img style="width:330px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%208.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="04be2a0a-b399-4adc-895c-e25910542dc7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Si estamos trabajando con un VCS, como es el caso, se nos preguntará si deseamos añadir la clase java al repositorio con el siguiente mensaje:<figure id="ba2f0a57-d92f-44d3-9e79-3b9264382d5e" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%209.png"><img style="width:634px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%209.png"/></a></figure><p id="d4049c1b-299a-4c47-a3b2-48f9eeec5061" class="">En mi caso la añadiré</p></div></figure><figure id="09fd4a80-7a76-4e6c-9f63-b131d84f0f6d" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2010.png"><img style="width:370px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2010.png"/></a></figure><p id="1ad41cc8-0f3f-4a57-a9c3-96ea1084ec41" class="">Ahora nos preguntará el IDE si queremos descargar el paquete del repositorio Maven, le diremos que si para poder continuar con el desarrollo de la práctica de manera normal:</p><figure id="60e7042b-ab03-4507-8406-374ca51b7729" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2011.png"><img style="width:578px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2011.png"/></a></figure><p id="2297ccc1-c683-4f34-9981-10c57dac15e4" class="">Tras esto solo restara importar la librería desde el menú contextual:</p><figure id="37412a91-4760-46e6-9876-5ecddbfb827c" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2012.png"><img style="width:331px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2012.png"/></a></figure><p id="aba5a13e-5dca-44e8-886e-8b6f4ead2fc7" class="">Ahora vamos a crear un método llamado <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>test-crear-coche e</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> instanciaremos un objeto de tipo coche, que llamaremos cocheNuevo:</p><figure id="062c7254-8d36-4412-bf2c-4074052358e1" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2013.png"><img style="width:844px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2013.png"/></a></figure><p id="62b67689-b604-4606-8d38-c6f0451a9ae4" class="">Puesto que la clase <strong><strong><strong><strong><strong>Coche</strong></strong></strong></strong></strong> no existe, el IDE no sabrá instanciar un objeto de ese tipo. Sin mebargo, el IDE nos ofrece la posibilidad de crear por nosotros la clase, por tanto vamos a aceptar su sugerencia;</p><figure id="6a1b4a52-9103-431c-8f76-fc75fda25e65" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2014.png"><img style="width:577px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2014.png"/></a></figure><p id="2ec5fa68-2ad7-4ecc-9a92-edc5678a5b3e" class="">Ahora nos preguntará el destino para la clase, puesto que no queremos variar la destinación por defecto (que es la actual) simplemente aceptaremos:</p><figure id="7f81962e-9d23-4100-a0ec-1761bd3a6114" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2015.png"><img style="width:499px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2015.png"/></a></figure><p id="c06f68a4-5dae-45ac-836e-8e94bbb992e3" class="">Como podemos observar se ha creado de manera automática la clase:</p><figure id="d06b9885-46c0-4f3a-af5a-010843d72484" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2016.png"><img style="width:553px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2016.png"/></a></figure><p id="84c36d6e-8b57-4039-8b30-b76a73cfc2a3" class="">Ahora probaremos a ejecutar el test, el cual debería de dar un resultado satisfactorio:</p><figure id="e9716c14-8a71-433e-b315-270633afd5f9" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2017.png"><img style="width:635px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2017.png"/></a></figure><figure id="ce1b4a6b-24c2-4df9-b2e1-2615e04b48c2" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2018.png"><img style="width:730px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2018.png"/></a></figure><p id="a79f0c6a-6de4-47b4-8666-38e427763fdd" class="">Ahora vamos a realizar un test de tipo <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>assertEquals </strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>sobre el parámetro velocidad del coche. Como esta variable no existe el IDE nos sugerirá crearla:</p><p id="4ce85c71-e778-44e8-a719-64699f510fd1" class="">Y si no vamos a la clase coche podremos comprobar que efectivamente se ha generado el atributo velocidad:</p><figure id="b90eb63e-d736-4b91-b7d8-d124bb39cdc2" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2019.png"><img style="width:689px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2019.png"/></a></figure><figure id="18155ea1-89a4-4f36-b327-7c5b4ae70b3b" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2020.png"><img style="width:507px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2020.png"/></a></figure><p id="d3087052-09b2-4ef4-9db0-d38e77ac1ea9" class="">Ya solo nos resta ejecutar el test y comprobar que este se completa de manera satisfactoria:</p><figure id="367a5fd3-87fd-4a10-8195-6ce5ac0445a2" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2021.png"><img style="width:1104px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2021.png"/></a></figure><p id="7f8b6d85-dfb3-4341-842f-95b43be7ff79" class="">
+</p><p id="da32afec-b5b3-4c2e-9ad0-be2481c930d8" class="">Ahora crearemos un nuevo test y llamaremos al método acelerar pasándole como parámetro el valor 30. Al no existir el método mencionado el IDE nos sugerirá crearlo de manera automática, por lo cual aceptaremos:</p><p id="120b2d11-f69f-4659-bd41-f10be4e98b90" class="">Tras esto daremos cuerpo al método recién creado para que este cumpla la función que requerimos:</p><figure id="5a1cf2ba-6a36-426d-bd05-cd25c491985e" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2022.png"><img style="width:731px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2022.png"/></a></figure><figure id="c8b94835-6fbf-4602-9f71-65052f0ff7c8" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2023.png"><img style="width:972px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2023.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="641798c1-69f9-4f58-93d7-f048dcc22959"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Como se puede observar en las dos capturas anteriores el nombre del parámetro no coincide, esto es debido a que el nombre original no era para nada intuitivo y podía dar lugar a problemas de legibilidad cuando el software escale</div></figure><p id="8d7640a7-530e-4298-bbf1-8076094a6290" class="">Ahora crearemos un <strong>Assertions.</strong><strong><em>assertEquals </em></strong>y testearemos que efectivamente la velocidad aumente en 30:</p><figure id="953ba25d-2b1c-4413-a354-2b0f3611003b" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2024.png"><img style="width:848px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2024.png"/></a></figure><p id="fe5fcb55-9b58-44a6-bfb0-688e66ad0e1c" class="">Tras haber creado el método acelerar, procederemos a crear el de decelerar. Para ello llamaremos al método desde un nuevo test y replicaremos el proceso seguido en las capturas anteriores, pero adaptado a las necesidades de este nuevo método:</p><figure id="2cd0b087-a439-4608-999a-40d4cec1ffe0" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2025.png"><img style="width:668px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2025.png"/></a></figure><figure id="cfc8c949-7a54-4420-b710-c62aba32655b" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2026.png"><img style="width:521px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2026.png"/></a></figure><figure id="dc66afff-c927-45b8-80e2-f6c1a628eb5d" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2027.png"><img style="width:1130px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2027.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="08958ede-79d6-41f2-b08e-5fc7f5cf1f1d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">En el test se establece la velocidad inicialmente para que el test tenga lógica y se pueda comprobar de manera correcta</div></figure><p id="08e59beb-75c4-4207-b92b-3ed08f4565c6" class="">Para el siguiente test reutilizaremos el código del test anterior, pero esta vez probaremos que la velocidad mínima del coche no sea inferior a 0. Para esto solo deberemos ajustar los parámetros del test y ver que resultado obtenemos:</p><figure id="47b113e9-362b-48eb-89d1-ab24588de5f3" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2028.png"><img style="width:1218px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2028.png"/></a></figure><p id="11964a8a-a21f-4e94-a48a-17e70f019cdb" class="">Como podemos observar no pasamos el test, por tanto deberemos de ir a la clase coche y ajustar el método decelerar para que la condición se cumpla y el test sea satisfactorio:</p><figure id="dd23c9d7-1017-440a-ae5f-1e388a625102" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2029.png"><img style="width:446px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2029.png"/></a></figure><p id="33404e7a-4619-4ce0-8c8c-73ff7920ea3f" class="">Ahora volveremos a realizar el test y comprobaremos que ahora si que funcione de manera correcta:</p><figure id="5591bbcc-dd35-486c-a4f7-af912976ce1e" class="image"><a href="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2030.png"><img style="width:1256px" src="Memoria%20TDD%20InteliJ%20Junit5%204563c2324b01450f8ff324fb73fa4af1/Untitled%2030.png"/></a></figure><p id="ae1d77b2-b2d8-425a-9708-9db3a25fd745" class="">Como podemos observar, ahora todos los tests tienen un resultado satisfactorio</p></div></article></body></html>
